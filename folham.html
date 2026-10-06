@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Folham Nig Limited — Digital Advertising Solution</title>
+<script src="./CSS/tailwind.js"></script>
+<style>
+  :root{
+    --blue:#1857ff;
+    --blue-dark:#0e2f8c;
+    --black:#0a0a0c;
+    --lavender:#c9c9f5;
+    --lavender-deep:#b7b6ef;
+    --ink:#111114;
+    --paper:#ffffff;
+    --grey:#6b6b75;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  body{
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .page{
+    max-width:480px;
+    margin:0 auto;
+    overflow-x:hidden;
+  }
+
+  a{text-decoration:none; color:inherit;}
+
+  /* ===== NAV ===== */
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 20px;
+    background:var(--paper);
+  }
+  .nav .logo-mark{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-weight:800;
+    font-size:15px;
+    letter-spacing:0.3px;
+  }
+  .nav .logo-mark .swirl{
+    width:26px; height:26px;
+    border:2px solid var(--blue);
+    border-radius:50%;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    flex:none;
+  }
+  .nav .logo-mark .swirl::after{
+    content:"";
+    width:10px; height:10px;
+    background:var(--blue);
+    border-radius:50%;
+  }
+  .nav .grid-icon{
+    display:grid;
+    grid-template-columns:repeat(2,7px);
+    grid-gap:4px;
+  }
+  .nav .grid-icon span{
+    width:7px; height:7px;
+    background:var(--blue);
+    border-radius:2px;
+  }
+  .nav-links{
+    display:none;
+    align-items:center;
+    gap:34px;
+    font-size:14px;
+    font-weight:600;
+  }
+  .nav-cta{
+    display:none;
+    background:var(--black);
+    color:#fff;
+    padding:11px 22px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:600;
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    background:var(--black);
+    color:var(--paper);
+    padding:46px 24px 56px;
+    text-align:center;
+  }
+  .hero-inner{
+    max-width:480px;
+    margin:0 auto;
+  }
+  .hero h1{
+    font-size:32px;
+    line-height:1.15;
+    font-weight:800;
+    letter-spacing:-0.5px;
+  }
+  .hero h1 .accent{ color:var(--blue); }
+  .hero p{
+    margin-top:16px;
+    font-size:13px;
+    color:#c9c9d4;
+    line-height:1.6;
+    max-width:280px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .scroll-btn{
+    width:44px; height:44px;
+    border-radius:50%;
+    background:var(--blue);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:30px auto 0;
+    border:none;
+    color:#fff;
+    font-size:18px;
+    cursor:pointer;
+  }
+
+  /* ===== STATS ===== */
+  .stats{
+    background:var(--paper);
+    padding:26px 24px 8px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    row-gap:22px;
+    max-width:480px;
+    margin:0 auto;
+  }
+  .stat{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+  }
+  .stat .icon{
+    width:30px; height:30px;
+    border-radius:50%;
+    background:var(--blue);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:13px;
+    flex:none;
+  }
+  .stat .num{
+    font-size:17px;
+    font-weight:800;
+    line-height:1.2;
+  }
+  .stat .label{
+    font-size:11px;
+    color:var(--grey);
+    margin-top:2px;
+  }
+
+  .intro{
+    padding:10px 24px 40px;
+    font-size:14px;
+    line-height:1.6;
+    color:var(--ink);
+    max-width:480px;
+    margin:0 auto;
+  }
+
+  /* ===== WHO WE ARE ===== */
+  .who{
+    background:var(--lavender);
+    padding:44px 24px 50px;
+  }
+  .who-inner{
+    max-width:480px;
+    margin:0 auto;
+  }
+  .who h2{
+    font-size:30px;
+    font-weight:900;
+    letter-spacing:1px;
+    text-align:center;
+    margin-bottom:22px;
+  }
+  .who p{
+    font-size:13px;
+    line-height:1.7;
+    color:#2a2a33;
+    margin-bottom:22px;
+  }
+  .billboard-photo{
+    width:100%;
+    height:190px;
+    border-radius:8px;
+    margin-bottom:24px;
+    background:
+      linear-gradient(180deg, rgba(10,10,15,0.15), rgba(10,10,15,0.55)),
+      repeating-linear-gradient(115deg, #d33a2c 0 60px, #e0522f 60px 120px, #f2a93b 120px 180px, #2f6fd6 180px 240px);
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:flex-end;
+    padding:10px;
+  }
+  .billboard-photo span{
+    background:#000a;
+    color:#fff;
+    font-size:10px;
+    padding:4px 8px;
+    border-radius:4px;
+  }
+  .learn-btn{
+    display:block;
+    width:fit-content;
+    margin:0 auto;
+    background:var(--black);
+    color:#fff;
+    padding:13px 26px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:600;
+  }
+
+  /* ===== PRODUCTS ===== */
+  .products{
+    background:var(--black);
+    color:#fff;
+    padding:46px 24px 40px;
+  }
+  .products-inner{
+    max-width:480px;
+    margin:0 auto;
+  }
+  .products h2{
+    font-size:26px;
+    font-weight:800;
+    text-align:center;
+    line-height:1.25;
+  }
+  .products h2 .sub{
+    display:block;
+    font-size:26px;
+    color:#9aa4c9;
+    font-weight:800;
+  }
+  .service-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px 16px;
+    margin-top:34px;
+  }
+  .service{
+    text-align:center;
+  }
+  .service .icon{
+    width:44px; height:44px;
+    background:var(--blue);
+    border-radius:10px;
+    margin:0 auto 12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+  }
+  .service h3{
+    font-size:13.5px;
+    font-weight:700;
+    margin-bottom:6px;
+  }
+  .service p{
+    font-size:10.5px;
+    color:#9d9da8;
+    line-height:1.5;
+  }
+  .service.full{
+    grid-column:1 / -1;
+  }
+
+  .clients{
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+  }
+  .clients .logo{
+    background:#fff;
+    border-radius:6px;
+    height:44px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:9px;
+    font-weight:700;
+    color:#111;
+    text-align:center;
+    padding:4px;
+  }
+
+  /* ===== LOCATION IMAGES ===== */
+  .loc-photos{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2px;
+  }
+  .loc-photo{
+    height:160px;
+    position:relative;
+    display:flex;
+    align-items:flex-end;
+    padding:14px 12px;
+    color:#fff;
+  }
+  .loc-photo::before{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(0deg, rgba(0,0,0,0.65), rgba(0,0,0,0.05));
+  }
+  .loc-photo span{
+    position:relative;
+    font-size:12.5px;
+    font-weight:700;
+  }
+  .loc-photo.one{ background-color:#3fc7c1; background-image:linear-gradient(135deg,#3fc7c1,#2a8bd6);}
+  .loc-photo.two{ background-color:#26282f; background-image:linear-gradient(135deg,#3a3d47,#17181c);}
+
+  .location{
+    background:var(--black);
+    color:#fff;
+    padding:40px 24px 0;
+    text-align:center;
+  }
+  .location-inner{
+    max-width:480px;
+    margin:0 auto;
+  }
+  .location h2{
+    font-size:26px;
+    font-weight:800;
+  }
+  .map-wrap{
+    margin-top:26px;
+    border-radius:10px;
+    overflow:hidden;
+  }
+  .map-wrap img{
+    width:100%;
+    display:block;
+  }
+
+  .footer{
+    background:var(--lavender);
+    padding:34px 24px 26px;
+    text-align:center;
+  }
+  .footer-inner{
+    max-width:480px;
+    margin:0 auto;
+  }
+  .socials{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    margin-bottom:20px;
+  }
+  .socials a{
+    width:32px; height:32px;
+    border-radius:50%;
+    background:var(--black);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:13px;
+  }
+  .footer .handle{
+    font-size:12px;
+    margin-bottom:18px;
+    color:#2a2a33;
+  }
+  .footer .contact{
+    font-size:12px;
+    line-height:1.9;
+    color:#2a2a33;
+  }
+  .footer .copyright{
+    margin-top:20px;
+    font-size:10.5px;
+    color:#4b4b58;
+  }
+
+  /* ============================================================
+     DESKTOP / TABLET — everything above is the mobile baseline;
+     these queries widen the layout and rearrange it into rows
+     without changing any of the mobile rules above.
+     ============================================================ */
+  @media (min-width: 900px){
+
+    .page{ max-width:none; }
+
+    /* --- nav --- */
+    .nav{
+      padding:22px 64px;
+      max-width:1280px;
+      margin:0 auto;
+    }
+    .nav .logo-mark{
+      font-size:16px;
+    }
+    .nav-links{ display:flex; }
+    .nav-cta{ display:inline-block; }
+    .nav .grid-icon{ display:none; }
+
+    /* --- hero: headline left, stats/copy feel like a proper split --- */
+    .hero{
+      padding:90px 64px 100px;
+      text-align:left;
+    }
+    .hero-inner{
+      max-width:1280px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:60px;
+    }
+    .hero-copy{ max-width:560px; }
+    .hero h1{
+      font-size:58px;
+    }
+    .hero p{
+      font-size:16px;
+      max-width:440px;
+      margin-left:0;
+    }
+    .scroll-btn{
+      margin:36px 0 0;
+      width:52px; height:52px;
+      font-size:20px;
+    }
+
+    /* --- stats: one row of six --- */
+    .stats{
+      max-width:1280px;
+      padding:64px 64px 20px;
+      grid-template-columns:repeat(6,1fr);
+      column-gap:24px;
+    }
+    .stat{ flex-direction:column; align-items:flex-start; gap:14px; }
+    .stat .icon{ width:38px; height:38px; font-size:16px; }
+    .stat .num{ font-size:22px; }
+    .stat .label{ font-size:12px; }
+
+    .intro{
+      max-width:1280px;
+      padding:20px 64px 70px;
+      font-size:16px;
+      max-width:1280px;
+    }
+    .intro{ max-width:680px; }
+
+    /* --- who we are: text left, image right --- */
+    .who{ padding:90px 64px; }
+    .who-inner{
+      max-width:1280px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:center;
+    }
+    .who h2{
+      text-align:left;
+      font-size:44px;
+      grid-column:1 / -1;
+      margin-bottom:10px;
+    }
+    .who .who-text{ grid-column:1; }
+    .who .who-visual{ grid-column:2; }
+    .who p{ font-size:15px; }
+    .billboard-photo{ height:320px; margin-bottom:0; }
+    .learn-btn{ margin:10px 0 0; }
+
+    /* --- products: three-column grid, headline left --- */
+    .products{ padding:100px 64px; }
+    .products-inner{ max-width:1280px; }
+    .products h2{
+      text-align:left;
+      font-size:46px;
+    }
+    .products h2 .sub{ font-size:46px; }
+    .service-grid{
+      grid-template-columns:repeat(3,1fr);
+      gap:48px 32px;
+      margin-top:56px;
+    }
+    .service{ text-align:left; }
+    .service .icon{ margin:0 0 16px; }
+    .service h3{ font-size:16px; }
+    .service p{ font-size:12.5px; max-width:280px; }
+    .service.full{ grid-column:auto; }
+
+    .clients{
+      grid-template-columns:repeat(8,1fr);
+      margin-top:64px;
+      gap:14px;
+    }
+    .clients .logo{ height:56px; font-size:10.5px; }
+
+    /* --- location photos side by side, larger --- */
+    .loc-photos{ max-width:1280px; margin:0 auto; }
+    .loc-photo{ height:280px; padding:24px 28px; }
+    .loc-photo span{ font-size:18px; }
+
+    .location{ padding:90px 64px 0; }
+    .location-inner{ max-width:1280px; }
+    .location h2{ font-size:40px; }
+    .map-wrap{ max-width:760px; margin:32px auto 0; }
+
+    .footer{ padding:60px 64px 40px; }
+    .footer-inner{
+      max-width:1280px;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      text-align:left;
+      flex-wrap:wrap;
+      gap:24px;
+    }
+    .socials{ justify-content:flex-start; margin-bottom:0; }
+    .footer .contact{ text-align:left; }
+    .footer .copyright{
+      width:100%;
+      text-align:center;
+      margin-top:34px;
+    }
+  }
+
+  @media (min-width: 1280px){
+    .hero h1{ font-size:66px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- NAV -->
+  <div class="nav">
+    <div class="logo-mark">
+      <span class="swirl"></span>
+      FOLHAM<br>NIG LIMITED
+    </div>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Who We Are</a>
+      <a href="#products">Products</a>
+      <a href="#">Location</a>
+    </nav>
+    <a class="nav-cta" href="#products">Get Started</a>
+    <div class="grid-icon">
+      <span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <h1>Digital <span class="accent">Advertising</span> Solution.</h1>
+        <p>We ae digital-led agency with a motive to helping businesses showcase their presence.</p>
+        <button class="scroll-btn" aria-label="Scroll down">&#8595;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="stat">
+      <div class="icon">&#128065;</div>
+      <div>
+        <div class="num">114,316,313</div>
+        <div class="label">Average View</div>
+      </div>
+    </div>
+    <div class="stat">
+      <div class="icon">&#128226;</div>
+      <div>
+        <div class="num">5,847,261</div>
+        <div class="label">Unique Reach</div>
+      </div>
+    </div>
+    <div class="stat">
+      <div class="icon">&#128100;</div>
+      <div>
+        <div class="num">90</div>
+        <div class="label">Years of Experience</div>
+      </div>
+    </div>
+    <div class="stat">
+      <div class="icon">&#128196;</div>
+      <div>
+        <div class="num">454</div>
+        <div class="label">Completed Projects</div>
+      </div>
+    </div>
+    <div class="stat">
+      <div class="icon">&#128578;</div>
+      <div>
+        <div class="num">187</div>
+        <div class="label">Happy Client</div>
+      </div>
+    </div>
+    <div class="stat">
+      <div class="icon">&#128205;</div>
+      <div>
+        <div class="num">40</div>
+        <div class="label">Location</div>
+      </div>
+    </div>
+  </section>
+
+  <p class="intro">Folham Nig limited provides our clients a guaranteed service delivery across various locations network in Nigeria.</p>
+
+  <!-- WHO WE ARE -->
+  <section class="who">
+    <div class="who-inner">
+      <h2>WHO WE ARE</h2>
+      <div class="who-text">
+        <p>Since 1984, Folham has used its outdoor advertising expertise to help companies of every size reach out to their current and potential customers. To compete in the fast growing industry, we keep modernizing our operations by introducing new products offerings in the OOH space, these products range from Digital LED Billboards, to "Human Walking" billboards which are popular for creating awareness for brands during activations and other formal /informal events.</p>
+        <p>We also actively participate in providing publicly owned OOH assets like; Public Buses (BRT), Bus Shelters and Street Lamppost to our existing clients in various parts of the country.</p>
+        <a class="learn-btn" href="#products">Learn More &#8594;</a>
+      </div>
+      <div class="who-visual">
+        <div class="billboard-photo"><span>Digital LED billboard, city street</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="products">
+    <div class="products-inner">
+      <h2>Our Products<span class="sub">and Services.</span></h2>
+
+      <div class="service-grid">
+        <div class="service">
+          <div class="icon">&#127959;</div>
+          <h3>BillBoards</h3>
+          <p>Stand out with our range of strategically placed billboards across major cities in Nigeria. From static to digital LED billboards, we have the perfect solution to amplify your brand.</p>
+        </div>
+        <div class="service">
+          <div class="icon">&#128204;</div>
+          <h3>Lamppost Advert</h3>
+          <p>Our lamppost advertisements are ideal for capturing attention in high-traffic areas, ensuring your brand stays top-of-mind.</p>
+        </div>
+        <div class="service">
+          <div class="icon">&#128200;</div>
+          <h3>Media Buying</h3>
+          <p>Maximize your media investments with our expert media buying services. We ensure that your message reaches the right audience at the right time.</p>
+        </div>
+        <div class="service">
+          <div class="icon">&#128652;</div>
+          <h3>Transit Advert</h3>
+          <p>Maximize your media investments with our expert media buying services. We ensure that your message reaches the right audience at the right time.</p>
+        </div>
+        <div class="service full">
+          <div class="icon">&#127912;</div>
+          <h3>Branding &amp; Activation</h3>
+          <p>Create memorable brand experiences through our dynamic branding and activation services. We help you engage with your audience through creative, on the ground solutions.</p>
+        </div>
+      </div>
+
+      <div class="clients">
+        <div class="logo">airtel</div>
+        <div class="logo">Wema Bank</div>
+        <div class="logo">AXA Mansa</div>
+        <div class="logo">Kuda</div>
+        <div class="logo">access</div>
+        <div class="logo">GTBank</div>
+        <div class="logo">Providus Bank</div>
+        <div class="logo">NB</div>
+        <div class="logo">DStv</div>
+        <div class="logo">MTN</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION PHOTOS -->
+  <div class="loc-photos">
+    <div class="loc-photo one"><span>Lagos State, Nigeria</span></div>
+    <div class="loc-photo two"><span>Ogun State, Nigeria</span></div>
+  </div>
+
+  <!-- LOCATION MAP -->
+  <section class="location">
+    <div class="location-inner">
+      <h2>Our Location</h2>
+      <div class="map-wrap">
+        <svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg">
+          <rect width="300" height="220" fill="#dfe7f0"/>
+          <path d="M40 40 L220 30 L260 90 L230 170 L150 200 L70 180 L30 120 Z" fill="#cfe0c7" stroke="#8fae7c" stroke-width="2"/>
+          <circle cx="90" cy="120" r="5" fill="#1857ff"/>
+          <circle cx="150" cy="100" r="5" fill="#1857ff"/>
+          <circle cx="180" cy="70" r="5" fill="#1857ff"/>
+          <circle cx="120" cy="150" r="5" fill="#1857ff"/>
+          <text x="70" y="60" font-size="10" fill="#33443a">NIGERIA</text>
+        </svg>
+      </div>
+
+      <div class="footer">
+        <div class="footer-inner">
+          <div>
+            <div class="socials">
+              <a href="#" aria-label="LinkedIn">in</a>
+              <a href="#" aria-label="Facebook">f</a>
+              <a href="#" aria-label="Instagram">&#9737;</a>
+              <a href="#" aria-label="YouTube">&#9654;</a>
+            </div>
+            <div class="handle">&#128247; folham_ltd</div>
+          </div>
+          <div class="contact">
+            &#128222; +234 804 814 3519, +234 802 345 2832<br>
+            &#128205; 32 Alhaji Asiri-Abo Str, Isolo, Lagos, Nigeria.<br>
+            &#9993; info@folham.com
+          </div>
+          <div class="copyright">&copy; Folham 2025 | All Rights Reserved</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About Folham</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<style>
+    :root {
+  --black: #000;
+  --lavender: #bcc2ff;
+  --gold: #f0b93a;
+  --card: #f6f6f6;
+  --ink: #111;
+  --rule: #6d73b8;
+  --pad: clamp(20px, 5vw, 64px);
+  --max: 1100px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  color: var(--ink);
+  background: var(--lavender);
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+.wrap {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--pad);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  background: var(--black);
+  padding: 16px var(--pad) clamp(48px, 8vw, 96px);
+}
+
+.nav {
+  max-width: var(--max);
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 999px;
+  padding: 12px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 900;
+  color: #1c4fd8;
+  line-height: 1;
+}
+
+.logo-mark {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  background: #1c4fd8;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-style: italic;
+  font-size: 20px;
+}
+
+.logo-text { font-size: 20px; letter-spacing: .02em; }
+.logo-text small {
+  display: block;
+  font-size: 8px;
+  letter-spacing: .15em;
+  color: #555;
+  font-weight: 700;
+}
+
+.menu-btn {
+  background: none;
+  border: 0;
+  padding: 4px;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: repeat(2, 12px);
+  gap: 3px;
+}
+.menu-btn span { width: 12px; height: 12px; background: #1c4fd8; border-radius: 2px; }
+.menu-btn:focus-visible { outline: 2px solid #1c4fd8; outline-offset: 4px; }
+
+.hero h1 {
+  max-width: var(--max);
+  margin: clamp(48px, 9vw, 110px) auto 0;
+  color: #fff;
+  font-size: clamp(2.4rem, 8vw, 5.5rem);
+  line-height: 1.1;
+  font-weight: 900;
+  letter-spacing: -.01em;
+}
+
+.hero h1 .outline {
+  display: block;
+  color: transparent;
+  -webkit-text-stroke: 1.5px #fff;
+}
+
+/* ---------- Our story ---------- */
+.story { padding-block: clamp(40px, 7vw, 90px); }
+
+.story-title {
+  text-align: center;
+  font-size: clamp(2.2rem, 7vw, 4rem);
+  font-weight: 900;
+  letter-spacing: -.06em;
+  margin: 0 0 clamp(28px, 5vw, 56px);
+  text-transform: uppercase;
+}
+
+.story-grid { display: grid; gap: 0; }
+
+.story-item {
+  padding-block: 20px;
+  border-bottom: 1px solid var(--rule);
+}
+.story-item:last-child { border-bottom: 0; }
+
+.story-item h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.story-item p {
+  font-family: 'Inter', sans-serif;
+  font-size: .85rem;
+  margin: 0;
+  max-width: 70ch;
+}
+
+/* ---------- Why we stand out ---------- */
+.stand-out { padding-bottom: clamp(48px, 8vw, 100px); }
+
+.stand-out h2 {
+  margin: 0 0 clamp(32px, 5vw, 56px);
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  line-height: 1.2;
+}
+
+.stand-out h2 em {
+  display: block;
+  font-weight: 400;
+  background: linear-gradient(90deg, #d0355b, #3d3fc0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.stand-out h2 strong {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  word-spacing: .2em;
+}
+
+.cards {
+  display: grid;
+  gap: 36px;
+  grid-template-columns: 1fr;
+  padding-top: 12px;
+}
+
+.card {
+  position: relative;
+  background: var(--card);
+  border-radius: 12px;
+  padding: 36px 24px 26px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .08);
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.card .badge {
+  position: absolute;
+  top: -18px;
+  left: 24px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: grid;
+  place-items: center;
+  font-size: .8rem;
+  font-weight: 500;
+}
+
+.card h3 { margin: 0 0 12px; font-size: 1.1rem; font-weight: 500; }
+.card p  { margin: 0; font-size: .8rem; color: #555; }
+
+/* ---------- Our squad ---------- */
+.squad {
+  background: var(--black);
+  color: #fff;
+  padding-block: clamp(40px, 7vw, 90px);
+}
+
+.squad h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  margin: 0 0 16px;
+}
+
+.squad .wrap > p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: .9rem;
+  max-width: 55ch;
+  margin: 0 0 clamp(32px, 5vw, 56px);
+}
+
+.team {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
+.member {
+  margin: 0;
+  width: 100%;
+  max-width: 340px;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.member img {
+  width: 100%;
+  aspect-ratio: 1 / 1.15;
+  object-fit: cover;
+  background: #ddd;
+}
+
+.member h3 { margin: 14px 0 2px; font-weight: 500; font-size: 1rem; }
+.member p  { margin: 0; font-size: .75rem; color: #ddd; }
+
+/* ---------- Footer ---------- */
+footer {
+  padding: 40px var(--pad) 32px;
+  text-align: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: .9rem;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.socials a {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .55);
+  display: grid;
+  place-items: center;
+  font-size: .7rem;
+  font-weight: 700;
+}
+.socials a:hover,
+.socials a:focus-visible { background: #fff; }
+
+.contact {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.contact a:hover { text-decoration: underline; }
+
+.copy { font-size: .75rem; margin: 0; }
+
+/* ---------- Tablet ---------- */
+@media (min-width: 700px) {
+  .story-item h2 { font-size: 1.15rem; }
+  .story-item p  { font-size: .95rem; }
+  .cards { grid-template-columns: repeat(3, 1fr); gap: 24px; padding-top: 24px; }
+  .card p { font-size: .85rem; }
+  .team { grid-template-columns: repeat(2, 1fr); }
+  .contact {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 28px;
+  }
+}
+
+/* ---------- Desktop ---------- */
+@media (min-width: 1000px) {
+  .story-grid { grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .story-item {
+    border-bottom: 0;
+    border-right: 1px solid var(--rule);
+    padding-right: 32px;
+  }
+  .story-item:last-child { border-right: 0; padding-right: 0; }
+  .team { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+</style>
+<body>
+
+  <!-- Hero -->
+  <header class="hero">
+    <nav class="nav" aria-label="Main">
+      <a href="#" class="logo" aria-label="Folham Nig. Limited home">
+        <span class="logo-mark">F</span>
+        <span class="logo-text">FOLHAM<small>NIG. LIMITED</small></span>
+      </a>
+      <button class="menu-btn" aria-label="Open menu">
+        <span></span><span></span><span></span><span></span>
+      </button>
+    </nav>
+    <h1>You Should Know <span class="outline">About Folham.</span></h1>
+  </header>
+
+  <main>
+    <!-- Our Story / Mission / Vision -->
+    <section class="story">
+      <div class="wrap">
+        <h2 class="story-title">Our Story</h2>
+        <div class="story-grid">
+          <article class="story-item">
+            <h2>Our Story</h2>
+            <p>Since 1984, Folham has used its outdoor advertising expertise to help companies of every size reach out to their current and potential customers. To compete in the fast growing industry, we keep modernizing our operations by introducing new products offerings in the OOH space, these products range from Digital LED Billboards, to "Human Walking" billboards which are popular for creating awareness for brands during activations and other formal / informal events.</p>
+          </article>
+          <article class="story-item">
+            <h2>Our Mission</h2>
+            <p>Our mission is to provide innovative and efficient advertising solutions that elevate your brand's visibility. To compete in the fast growing industry, we keep modernizing our operations by introducing new products offerings in the OOH space, these products range from Digital LED Billboards, to "Human Walking" billboards which are popular for creating awareness for brands during activations and other formal / informal events.</p>
+          </article>
+          <article class="story-item">
+            <h2>Our Vision</h2>
+            <p>Our Vision is to continue leading the transformation of outdoor advertising in Nigeria by embracing innovation and technology, helping brands build stronger connections with their audiences, and driving impactful results.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why we stand out -->
+    <section class="stand-out">
+      <div class="wrap">
+        <h2><em>Why We Stand Out</em> <strong>in the Outdoor Advertising Industry</strong></h2>
+        <div class="cards">
+          <article class="card">
+            <span class="badge">02</span>
+            <h3>Collaborative</h3>
+            <p>We pride ourselves on friendly and attentive service, that means empathy when goals shift or schedules change, collaboration on any kind of challenge even when it's not what we signed up for, flexibility with timing and budgetary needs and hard work to make every project successful; it's why our client relationships usually end up spanning 5 -15 years (and counting).</p>
+          </article>
+          <article class="card">
+            <span class="badge">03</span>
+            <h3>Data - Driven</h3>
+            <p>We're hungry for information about our clients, their audiences, products, and the industry trends. We work with data; the more we know, the more we can create marketing strategies that triggers and produces results long term.</p>
+          </article>
+          <article class="card">
+            <span class="badge">01</span>
+            <h3>Efficiency</h3>
+            <p>We've spent years working in some of the best advertising agencies in the world, and taken the best from that experience to develop a working process that is as pain-free as possible. When the project management is tight and the system is organized, it helps us focus on what really matters – creative work.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our squad -->
+    <section class="squad">
+      <div class="wrap">
+        <h2>Our Squad</h2>
+        <p>Our team is a tight-knit family of designers, artists, and visionaries, all bound by the same creative enthusiasm.</p>
+        <div class="team">
+          <figure class="member">
+            <img src="team-1.jpg" alt="Albert Festus, Creative Director">
+            <h3>Albert Festus</h3>
+            <p>Creative Director</p>
+          </figure>
+          <figure class="member">
+            <img src="team-2.jpg" alt="Albert Festus, Creative Director">
+            <h3>Albert Festus</h3>
+            <p>Creative Director</p>
+          </figure>
+          <figure class="member">
+            <img src="team-3.jpg" alt="Albert Festus, Creative Director">
+            <h3>Albert Festus</h3>
+            <p>Creative Director</p>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="socials">
+      <a href="#" aria-label="LinkedIn">in</a>
+      <a href="#" aria-label="Facebook">f</a>
+      <a href="#" aria-label="Instagram">ig</a>
+      <a href="#" aria-label="YouTube">▶</a>
+    </div>
+    <ul class="contact">
+      <li><a href="https://instagram.com/folham_ltd">folham_ltd</a></li>
+      <li>
+        <a href="tel:+2348048143519">+234 804 814 3519</a>,
+        <a href="tel:+2348023452832">+234 802 345 2832</a>
+      </li>
+      <li>32 Alhaji Asiri-Abo Str, Isolo, Lagos, Nigeria.</li>
+      <li><a href="mailto:info@folham.com">info@folham.com</a></li>
+    </ul>
+    <p class="copy">© Folham 2025 | All Rights Reserved</p>
+  </footer>
+
+</body>
+</html>
